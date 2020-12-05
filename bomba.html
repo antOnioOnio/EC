@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>bomba.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="pr%C3%A1ctica-4-desactivando-mi-bomba">Práctica 4. Desactivando mi bomba</h1>
+<h2 id="mi-c%C3%B3digo">Mi código</h2>
+<h3 id="contrase%C3%B1a">Contraseña</h3>
+<p>Voy a empezar explicando como he encriptado la contraseña. En primer lugar la declaro como es obvio de la siguiente manera, escondiendo la contraseña real dentro de los carácteres.</p>
+<pre><code>char password[]=&quot;cmeaoepoeijftafasenet\n&quot;;
+</code></pre>
+<p>Para desencriptarla y compararla he creado el siguiente método</p>
+<pre class="hljs"><code><div>int checkPassword(char *c){
+    int i = 0 ;
+    int counter = 0;
+    char finalPass[8];
+
+    finalPass[0] = password[0];
+    finalPass[1] = password[3];
+    finalPass[2] = password[6];
+    finalPass[3] = password[9];
+    finalPass[4] = password[12];
+    finalPass[5] = password[15];
+    finalPass[6] = password[18];
+
+    if ( finalPass[0] == c[0] &amp;&amp; finalPass[1] == c[1] &amp;&amp; 
+         finalPass[2] == c[2] &amp;&amp; finalPass[3] == c[3] &amp;&amp; 
+         finalPass[4] == c[4] &amp;&amp; finalPass[5] == c[5] &amp;&amp; 
+         finalPass[6] == c[6]  ){
+             return 1;
+         }else {
+
+            return 0;
+         }
+}
+</div></code></pre>
+<p>Como vemos declaro mi finallPass la cual va a ser los carácteres 0, 3, 6,9 12, 15 y 18 de mi contraseña. Siendo esta 'capitan'.</p>
+<p>Para comprobar si la contraseña es correcta o incorrecta se podría haber realizado un strncmp, se realiza comprobando carácter a carácter simplemente para despistar al posible hacker.</p>
+<h3 id="c%C3%B3digo-pin">Código PIN</h3>
+<p>Simplemente vamos a realizarle una operación aritmética sobre el pin original, dividiendolo por 2 y sumandole 25.</p>
+<pre class="hljs"><code><div>int checkPin(int number){
+
+    passcode = (passcode / 2 ) + 25 ; //----&gt; 5025
+    
+    if ( number != passcode){
+        return 0;
+    }
+
+    return 1;
+
+}
+</div></code></pre>
+<h2 id="desactivar-la-bomba">Desactivar la bomba</h2>
+<p>Vamos a proceder a desactivar la bomba, para ello lo primero que debemos es poner un break point en el comienzo de la función main y analizar.</p>
+<p><img src="./imagenes/main.png" alt=""></p>
+<p>Lo primero que debemos observar es situar un brekapoint en main y observar las llamadas que hacen explotar nuestra bomba y las ordenes que la preceden.</p>
+<p>Podemos diferenciar 4 llamadas a <em>boom</em>:</p>
+<h3 id="primera-llamada">Primera llamada</h3>
+<p>La primera llamada se realiza en main+95 y se efectua justo después de realizarse la llamada a checkPassword.</p>
+<pre><code>~~~
+callq  4011b6 &lt;checkPassword&gt;
+test   %eax,%eax
+jne    401332 &lt;main+0x64&gt;
+callq  40128e &lt;boom&gt;
+~~~
+</code></pre>
+<p>Para saltarnos este paso vamos a valernos de las dos instrucciones máquinas que se realizan antes. En $eax se ha guardado el return de la llamada a checkPassword y el el test hara saltar el jne solo si el test anterior no son iguale, no es cero o si ZF esta desactivada.</p>
+<p>Situamos un breakpoint en main+91, y con el comando nexti nos situamos en esta parte del programa.</p>
+<p><img src="./imagenes/br1.png" alt=""></p>
+<p>Vamos a modificar el valor de eax, para ello ejecutamos.</p>
+<p><img src="./imagenes/primersalto.png" alt=""></p>
+<p>Y podemos observar que hemos saltado la primera invocación.</p>
+<p><img src="./imagenes/primersalto2.png" alt=""></p>
+<h3 id="segunda-llamada">Segunda llamada</h3>
+<p>La segunda llamada se realiza en main+131 y se efectua tras una llamada a gettimeofday.</p>
+<pre class="hljs"><code><div>callq  401090 &lt;gettimeofday@plt&gt;
+mov    0x20(%rsp),%rax
+sub    0x10(%rsp),%rax
+cmp    $0x5,%rax
+jle    401356 &lt;main+0x88&gt;
+callq  40128e &lt;boom&gt;
+</div></code></pre>
+<p>Al igual que en la primera llamada, observamos que justo antes de la llamada a boom se efectua una comparación JLE la cual salta si es menor o igual. El salto se realiza si ZF 0 1 o si SF es diferente de OF. Lo que vamos a hacer de nuevo es valernos de que podemos cambiar el valor de los registros cuando queramos y vamos a cambiar el valor de rax para que cumpla dichas condiciones justo antes de la llamada.</p>
+<p>Situamos un breakpoint en la llamada</p>
+<p><img src="./imagenes/br2.png" alt=""></p>
+<p>Cambiamos el valor de rax para que cumpla la comparativa</p>
+<p><img src="./imagenes/salto2.png" alt=""></p>
+<p>Observamos que efectivamente, salta a la llamada boom</p>
+<p><img src="./imagenes/salto21.png" alt=""></p>
+<h3 id="tercera-llamada">Tercera llamada</h3>
+<p>La tercera llamada se realiza en main+183 y va precedida de una llamada al método checkPin.</p>
+<p><img src="./imagenes/checkpin.png" alt=""></p>
+<p>Vuelve a repetirse el mismo patrón que en las anteriores llamadas, en este caso se produce la misma secuencia que se producía en la primera llamada, por lo que para saltarnos nuestra indeseada explosión vamos a operar de la misma manera.</p>
+<p>Situamos un break point justo en la comparación</p>
+<p><img src="./imagenes/br3.png" alt=""></p>
+<p>Cambiamos el valor de eax y proseguimos</p>
+<p><img src="./imagenes/salto4.png" alt=""></p>
+<p>Observamos que hemos pasado la llamada con éxito</p>
+<p><img src="./imagenes/salto41.png" alt=""></p>
+<h3 id="%C3%BAltima-llamada-la-salvaci%C3%B3n">Última llamada, la salvación</h3>
+<p>La última llamada a la bomba se produce en la linea main+219. y observamos que se realiza siguiendo el mismo patrón que en la segunda llamada.</p>
+<p><img src="./imagenes/ultimallamada.png" alt=""></p>
+<p>Vamos a seguir el mismo patrón de nuevo. Situamos nuestro breakpoint.</p>
+<p><img src="./imagenes/bru.png" alt=""></p>
+<p>Cambiamos el valor de rax para que cumpla el condicional.</p>
+<p><img src="./imagenes/bru12.png" alt=""></p>
+<p>Y lo que una vez fue un sueño se cumple.</p>
+<p><img src="./imagenes/defused1.png" alt=""></p>
+<h2 id="en-busca-de-las-claves">En busca de las claves</h2>
+<h3 id="contrase%C3%B1a">Contraseña</h3>
+<p>Lo primero que vamos a hacer para intentar averiguar donde se almacena nuestra contraseña será buscar en el método donde puede estar, si no conocieramos nuestro código solo habría dos candidatos, los que no son precedidos por gettime. Vamos a mirar en el primero, curiosamente se llama checkPassword.</p>
+<p><img src="./imagenes/checkPassword.png" alt=""></p>
+<p>Si observamos las primeras líneas observamos un patrón interesante, si no conocieramos nuestro código saltaría a la vista que se van almacenando posiciones de memoria saltando de 3 en 3.</p>
+<pre class="hljs"><code><div>  movzbl 0x2e8a(%rip),%r9d        # 404063
+  movzbl 0x2e85(%rip),%r8d        # 404066
+  movzbl 0x2e81(%rip),%edi        # 404069 &lt;password+0x9&gt;
+  movzbl 0x2e7d(%rip),%esi        # 40406c &lt;password+0xc&gt;
+  movzbl 0x2e79(%rip),%ecx        # 40406f &lt;password+0xf&gt;
+  movzbl 0x2e75(%rip),%eax        # 404072 &lt;password+0x12&gt;
+  movzbl (%rdx),%r10d
+</div></code></pre>
+<p>Vamos a observar entonces que tienen nuestras posiciones de memoria una vez realizados todos estos movimientos por el compilador. Para ello con nexti nos situamos despues de dichas operaciones.</p>
+<p><img src="./imagenes/password1.png" alt=""></p>
+<p>Y ahora vamos a evaluar cada posición de memoria.</p>
+<p><img src="./imagenes/password2.png" alt=""></p>
+<p>Esto nos da los carácteres con los que se forman la contraseña &quot;A P I T A N C&quot; pero podría el programador podría haber cambiado el orden de estos a la hora de comprobarlos. La mejor manera de averiguarla entonces va a ser encontrar el patrón. Como observamos en la imagen, los carácteres van saltando de 3 en 3 en posiciones de memoria. Si jugamos un poco con los registros observamos que a partir de la posicion de memoria 0x404060 encontramos lo siguiente:</p>
+<p><img src="./imagenes/password3.png" alt=""></p>
+<p>Y si a este texto le aplicamos el patrón observado, encontramos que vamos obtener una palabra la cual tiene bastantes probabilidades de ser nuestra password</p>
+<pre><code>C me A oe P oe I jf T af A se N et ===&gt; CAPITAN
+</code></pre>
+<h3 id="c%C3%B3digo-pin">Código Pin</h3>
+<p>Lo primero que vamos a hacer, al igual que a la hora de averiguar la contraseña va a ser ver los posibles registros donde se pueda almacenar. Para ello vamos a observar el código del método que se ejecuta después de introducir nuestro pin.</p>
+<p><img src="./imagenes/pin1.png" alt=""></p>
+<p>Lo que observamos es que aunque se realizan varías operaciones aritméticas sobre el registro que se va a comparar, $eax, no importan porque hay un momento en la ejecución que se va a comparar con el parámetro que hemos pasado, $edi. Por tanto basta con situarnos sobre dicha comparación y observar el estado del registro $eax en ese momento.</p>
+<p><img src="./imagenes/pin2.png" alt=""></p>
+<p>Imprimimos el valor de $eax en este momento</p>
+<p><img src="./imagenes/pin4.png" alt=""></p>
+<p>Y ya hemos conseguido nuestro pin. También lo observamos en los registros en la parte superior.</p>
+<p><img src="./imagenes/pin3.png" alt=""></p>
+
+</body>
+</html>
