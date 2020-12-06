@@ -126,6 +126,42 @@ En el registro $rsi encontramos nuestra contraseña encriptada, la cual se va a 
 
 Para comprobarlo basta con ejecutar de nuevo el programa, introducirla y efectivamente, hemos saltado el primer control.
 
+## Descubriendo el pin
+
+Al igual que con la contraseña, una vez introducido nuestro pin vamos a seguirle la pista y ver que métodos se llaman después. En este caso nos encontramos con el método *otra_funcion_insignificante. Introducimos un pin cualquiera, 1111 y observamos la función.
+
+![](./imagenes/bombaAntonio20.png)
+
+En esta caso observamos que nuestro pin va a sufrir una única transformación. La operación que se va a realizar sober él será:
+
+    lea     0x1e($rdi, $rdi, 1), %eax
+
+Esta línea realizará la siguiente operación:
+
+    30 + ( PIN + PIN x 1 )
+
+El resultado de dicha operación lo almacenará en $eax y será el registro devuelto. Para comprobar que esto es asi observamos el valor del registro $eax una vez terminada la operación.
+
+![](./imagenes/bombaAntonio21.png)
+
+Si recordamos nuestro pin al azar fue 1111. Efectuando la operación anterior:
+
+    30 + (1111 + 1111 x 1) = 2252
+
+Hemos encontrado el algoritmo de encriptación, el siguiente paso es ver contra qué valor se va a comparar y hacer el algoritmo inverso. Para ello seguimos con la ejecución y observamos que esta comparación se realiza en la línea main+260
+
+![](./imagenes/bombaAntonio22.png)
+
+A simple vista vemos que se esta comparando con 0xfb8, cuyo valor equivale a 4024. Si hacemos la operación inversa:
+
+
+    (x + x*1) + 30 = 4024
+    2x = 3994
+    x = 1997
+
+Por lo que concluimos que nuestro PIN es 1997. 
+Para probarlo simplemente reiniciamos el programa e introducimos como contraseña **APROBADO** y como pin **1997**.
+
 
 
 
