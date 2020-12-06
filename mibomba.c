@@ -130,3 +130,41 @@ int main(){
 
 //br *main+179
 //br *main+213
+
+
+
+
+
+/**
+
+br *main+134
+
+br *esta_funcion_no_hace_explotar
+
+
+Primer salto
+br *main+130
+set $al=0
+
+Segundo salto
+br *main+164
+set $rax=0
+
+
+
+Tercer salto
+escanea en 219
+
+br *main+221
+
+br *main+242
+
+
+set $ebx=0x1
+
+br *main+260
+
+pin = 30 ?
+
+br *main+297
+*/
