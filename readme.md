@@ -2,8 +2,8 @@
 Este repositorio esta dedicado exclusivamente a la realización de la práctica 4 de EC. 
 
 ## Desactivando mi bomba
-* Código lo puedes encontrar [aquí](/miBomba.c)
-* Explicación de cómo desactivarla y encontrar claves[aquí](/bomba.md)
+* Código lo puedes encontrar [aquí](/mibomba.c)
+* Explicación de cómo desactivarla y encontrar claves [aquí](/bomba.md)
 
 ## Desactivando la bomba de Antonio Jimenez
 
