@@ -13,7 +13,7 @@ Una vez nos hemos cerciorado de hasta que punto somos capaces de llegar instrucc
 
 ![](./imagenes/bombaAntonio2.png)
 
-Observamos la comparación que se realiza justo antes, como ya sabemos, je va a comprobar tanto que sean iguals como las flags. Para desactivarla y que no se ejecute la llamada al método ejecutamos:
+Observamos la comparación que se realiza justo antes, como ya sabemos, je va a comprobar tanto que sean iguales como las flags. Para desactivarla y que no se ejecute la llamada al método ejecutamos:
 
     set $al=0
 
@@ -63,7 +63,7 @@ Vamos a proceder a cambiar el valor del registro $rax en el momento de la compro
 ![](./imagenes/bombaAntonio11.png)
 
 
-## Descubriendo la contraseña
+## Descubriendo las claves
 ### Descifrando el algoritmo
 El primer paso que vamos a hacer para tratar de descubrir la contraseña será tratar de averiguar como ha sido encriptada. Para ello vamos a seguir la pista a la contraseña que nosotros escribimos y que métodos se llaman después de que lo hagamos. 
 Introducimos como contraseña "hola" y observamos que el siguiente método es *funcion_insignificante*. Vamos a echarle un ojo:
@@ -162,10 +162,7 @@ A simple vista vemos que se esta comparando con 0xfb8, cuyo valor equivale a 402
 Por lo que concluimos que nuestro PIN es 1997. 
 Para probarlo simplemente reiniciamos el programa e introducimos como contraseña **APROBADO** y como pin **1997**.
 
-
-
-
-
+![](./imagenes/bombaAntonio23.png)
 
 
 

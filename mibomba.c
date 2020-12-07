@@ -102,6 +102,40 @@ int main(){
 	defused();
 }
 
+
+/**
+ * 
+ * 
+ * 
+ * 
+ * bomba ana vico
+ * 
+ * 
+ * br *main+119
+ * set $eax=0
+ * 
+ * br *main+153
+ * set $rax=0
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+
 // focus cmd para enfocarse en eso
 
 // saltarse primera comprobacion----> set eax ==> 0
