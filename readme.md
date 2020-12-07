@@ -10,3 +10,10 @@ Este repositorio esta dedicado exclusivamente a la realización de la práctica 
 * El ejecutable lo puedes [aquí](/bombasCompañeros/bomba_Antonio_Jimenez_Rodriguez)
 
 * Explicación de como desactivarla y encontrar las claves [aquí](/bombaAntonioJimenez.md)
+
+
+## Desactivando la bomba de Ana Vico
+
+* El ejecutable lo puedes [aquí](/bombasCompañeros/bomba-AnaVico)
+
+* Explicación de como desactivarla y encontrar las claves [aquí](/bombaAnaVico.md)
